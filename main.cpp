@@ -37,7 +37,7 @@ int main() {
     address.sin_port = htons(64335);
 
     if (bind(sockfd, (struct sockaddr*) &address, sizeof(address)) < 0) {
-        println("Program already running (or another process is using port 64335)");
+        println("desktopgalaxy already running (or another process is using port 64335)");
         return 1;
     }
 

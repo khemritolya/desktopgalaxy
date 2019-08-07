@@ -11,7 +11,6 @@
 
 #include <string>
 
-/* Xlib things */
 extern int display_width;
 extern int display_height;
 

@@ -10,7 +10,6 @@
 #include "galaxy.h"
 #include "utility.h"
 
-/* Xlib things */
 Display* display;
 int screen;
 Window window;
@@ -18,10 +17,8 @@ XVisualInfo vinfo;
 int display_width;
 int display_height;
 
-/* opengl things */
 GLXContext gl_context;
 
-/* internal */
 long last_time;
 
 int init() {
