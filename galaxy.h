@@ -3,8 +3,6 @@
 
 #include <vector>
 
-#define PI 3.14159265
-
 struct star {
     double angle, radius, x, y;
 
@@ -14,9 +12,6 @@ struct star {
 };
 
 extern std::vector<star>* galaxy;
-
-double isin(double angle_deg);
-double icos(double angle_deg);
 
 void generate();
 

@@ -25,7 +25,7 @@ int init() {
     display = XOpenDisplay(0);
 
     if (!display) {
-        println("Could not initialize X Display");
+        println("could not initialize X Display");
         return 0;
     }
 
@@ -34,7 +34,7 @@ int init() {
     display_width = DisplayWidth(display, screen);
     display_height = DisplayHeight(display, screen);
 
-    println("Fitting to display of size " + std::to_string(display_width) + "x" + std::to_string(display_height));
+    println("fitting to display of size " + std::to_string(display_width) + "x" + std::to_string(display_height));
 
     XSetWindowAttributes x_attr = {0};
     XMatchVisualInfo(display, DefaultScreen(display), 32, TrueColor, &vinfo);
@@ -49,11 +49,11 @@ int init() {
 
     XStoreName(display, window, "desktopgalaxy");
 
-    println("Created & Modified Window (hopefully it worked)");
+    println("created & modified window (hopefully it worked)");
 
     gl_context = glXCreateContext(display, &vinfo, nullptr, GL_TRUE);
     if (glXMakeCurrent(display, window, gl_context) == False) {
-        println("Unable to initialize GLX");
+        println("unable to initialize GLX");
         return 0;
     }
 
@@ -73,19 +73,19 @@ int init() {
 
     generate();
 
-    println("Created a galaxy of " + std::to_string(galaxy->size()) + " stars");
+    println("created a galaxy of " + std::to_string(galaxy->size()) + " stars");
 
     return 1;
 }
 
 void quit() {
-    print("Cleaning up...");
+    print("cleaning up...");
     delete galaxy;
     glXMakeCurrent(display, None, nullptr);
     glXDestroyContext(display, gl_context);
     XDestroyWindow(display, window);
     XCloseDisplay(display);
-    println("Done");
+    println("done");
 }
 
 void paint() {
@@ -108,7 +108,7 @@ void paint() {
     for (int i = 0; i < galaxy->size(); i++) {
         star& s = galaxy->at(i);
 
-        glColor4f(1, 1 , 1, 0.7 * i / galaxy->size() + 0.1);
+        glColor4f(1, 1 , 1, 0.5 * i / galaxy->size() + 0.3);
         glVertex2f(s.x + display_width / 2, s.y + display_height / 2);
 
         s.recompute(rescaled_time);

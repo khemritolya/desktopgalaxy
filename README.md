@@ -1,6 +1,6 @@
 # desktopgalaxy
 
-### Version 1.0  "Starchild"
+### Version 0.1  "Starchild"
 
 desktopgalaxy is a little project, made for personal use. I don't really care what you do with it.
 
@@ -20,7 +20,7 @@ It displays a galaxy that ~~should replace~~ replaces your screen background, wh
 
 ### Release Notes
 
-##### Version 1.0  "Starchild"
+##### Version 0.1  "Starchild"
 
 - Initial commit
 - Bugfixes

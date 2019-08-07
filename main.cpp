@@ -7,12 +7,17 @@
 #include "utility.h"
 
 void on_sig(int sigaction) {
-    println("Got interrupt signal " + std::to_string(sigaction));
+    println("got interrupt signal " + std::to_string(sigaction));
     quit();
 }
 
-int main() {
-    println("Beginning to initialize desktopgalaxy");
+int main(int argc, char** argv) {
+    clear();
+
+    print("running desktopgalaxy as ");
+    println(argv[0]);
+
+    println("beginning to initialize desktopgalaxy");
 
     struct sigaction action;
     action.sa_handler = on_sig;
@@ -24,7 +29,7 @@ int main() {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
     if (sockfd < 0) {
-        println("Can\'t open socket?");
+        println("can\'t open socket?");
         return 1;
     }
 
@@ -42,11 +47,11 @@ int main() {
     }
 
     if (!init()) {
-        println("Could not initialize window");
+        println("could not initialize window");
         return 1;
     }
 
-    println("Finished initialization");
+    println("finished initialization");
 
     return main_loop();
 }

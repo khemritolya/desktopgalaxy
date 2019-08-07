@@ -7,6 +7,7 @@
 
 #include "galaxy.h"
 #include "window.h"
+#include "utility.h"
 
 std::vector<star>* galaxy;
 
@@ -18,17 +19,8 @@ star::star(double angle, double radius) {
 }
 
 void star::recompute(double rescaled_time) {
-    this->x = icos(this->angle - rescaled_time) * this->radius;
-    this->y = isin(this->angle - rescaled_time) * this->radius;
-}
-
-
-double isin(double angle_deg) {
-    return sin(angle_deg * PI / 180);
-}
-
-double icos(double angle_deg) {
-    return cos(angle_deg * PI / 180);
+    this->x = internal_cos(this->angle - rescaled_time) * this->radius;
+    this->y = internal_sin(this->angle - rescaled_time) * this->radius;
 }
 
 bool compare(const star& a, const star& b) {
@@ -36,10 +28,9 @@ bool compare(const star& a, const star& b) {
 }
 
 void generate() {
-    std::default_random_engine generator;
+    srand(1234);
+    std::default_random_engine generator(1234);
     std::normal_distribution<double> distribution(0.0, 0.5);
-
-    srand(time(0));
 
     double longest_axis = std::min(display_height, display_width) / 2.0;
 
