@@ -16,6 +16,6 @@ extern int display_height;
 
 int init();
 void quit();
-int main_loop();
+int main_loop(double fps_target);
 
 #endif

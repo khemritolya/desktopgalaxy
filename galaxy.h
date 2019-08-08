@@ -13,6 +13,6 @@ struct star {
 
 extern std::vector<star>* galaxy;
 
-void generate();
+void generate(int arm_count, int arm_length, double expansion_coefficient, int seed);
 
 #endif

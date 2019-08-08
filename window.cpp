@@ -5,6 +5,7 @@
 #include <GL/gl.h>
 #include <GL/glx.h>
 #include <GL/glu.h>
+#include <cmath>
 
 #include "window.h"
 #include "galaxy.h"
@@ -20,6 +21,9 @@ int display_height;
 GLXContext gl_context;
 
 long last_time;
+
+long first_time;
+long frames;
 
 int init() {
     display = XOpenDisplay(0);
@@ -71,14 +75,11 @@ int init() {
     XMapWindow(display, window);
     XSync(display, False);
 
-    generate();
-
-    println("created a galaxy of " + std::to_string(galaxy->size()) + " stars");
-
     return 1;
 }
 
 void quit() {
+    println("effective fps was: " + std::to_string(frames * 1000.0 / (time() - first_time)));
     print("cleaning up...");
     delete galaxy;
     glXMakeCurrent(display, None, nullptr);
@@ -89,8 +90,8 @@ void quit() {
 }
 
 void paint() {
+    frames++;
     last_time = time();
-    double rescaled_time = last_time % 100000 / 1000.0;
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -111,7 +112,7 @@ void paint() {
         glColor4f(1, 1 , 1, 0.5 * i / galaxy->size() + 0.3);
         glVertex2f(s.x + display_width / 2, s.y + display_height / 2);
 
-        s.recompute(rescaled_time);
+        s.recompute(last_time / 1000.0);
     }
     
     glEnd();
@@ -119,11 +120,16 @@ void paint() {
     glXSwapBuffers(display, window);
 }
 
-int main_loop() {
+int main_loop(double fps_target) {
+    int sleep_time = (int)std::round(1000.0 / fps_target);
+
+    frames = 0;
+    first_time = time();
+
     while(true) {
         if (XPending(display) == 0) {
             paint();
-            sleep(33 - (time() - last_time));
+            sleep(sleep_time - (time() - last_time));
         }
 
         while (XPending(display) > 0) {

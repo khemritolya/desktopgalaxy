@@ -27,20 +27,22 @@ bool compare(const star& a, const star& b) {
     return a.radius > b.radius;
 }
 
-void generate() {
-    srand(1234);
-    std::default_random_engine generator(1234);
+void generate(int arm_count, int arm_length, double expansion_coefficient, int seed) {
+    println("generating galaxy using seed " + std::to_string(seed));
+
+    srand(seed);
+    std::default_random_engine generator(seed);
     std::normal_distribution<double> distribution(0.0, 0.5);
 
     double longest_axis = std::min(display_height, display_width) / 2.0;
 
     galaxy = new std::vector<star>();
 
-    for (double i = 60; i < 250; i += 0.5) {
-        galaxy->push_back(star(i, std::pow(i, 1.15) * longest_axis / 500 + longest_axis / 10 * distribution(generator)));
-        galaxy->push_back(star(i+90, std::pow(i, 1.15) * longest_axis / 500 + longest_axis / 10 * distribution(generator)));
-        galaxy->push_back(star(i+180, std::pow(i, 1.15) * longest_axis / 500 + longest_axis / 10 * distribution(generator)));
-        galaxy->push_back(star(i+270, std::pow(i, 1.15) * longest_axis / 500 + longest_axis / 10 * distribution(generator)));
+    for (double i = 60; i < 60 + arm_length; i += 0.5) {
+        for (int j = 0; j < arm_count; j++) {
+            galaxy->push_back(star(i + 360.0 / arm_count * j, std::pow(i, expansion_coefficient) * longest_axis / 500 +
+            longest_axis / 10 * distribution(generator)));
+        }
     }
 
     for (double i = 0; i < 360; i += 0.3) {
@@ -48,7 +50,11 @@ void generate() {
     }
 
     for (double i = 0; i < 360; i += 0.7) {
-        galaxy->push_back(star(i, (rand() % 100) / 370.0 * longest_axis));
+        galaxy->push_back(star(i, (distribution(generator)+1) / 3.0 * longest_axis));
+    }
+
+    for (double i = 0; i < 360; i += 1) {
+        galaxy->push_back(star(i, (rand() % 100) / 470.0 * longest_axis));
     }
 
     std::sort(galaxy->begin(), galaxy->end(), compare);
