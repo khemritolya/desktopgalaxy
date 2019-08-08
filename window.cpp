@@ -70,7 +70,7 @@ int init() {
     glAccum(GL_MULT, 0.5f);
     glClearColor(0.0, 0.0, 0.0, 1);
 
-    println("OpenGL/GLU/whatever set up");
+    println("set up OpenGL/GLU/whatever");
 
     XMapWindow(display, window);
     XSync(display, False);
@@ -79,7 +79,7 @@ int init() {
 }
 
 void quit() {
-    println("effective fps was: " + std::to_string(frames * 1000.0 / (time() - first_time)));
+    println("average fps was: " + std::to_string(frames * 1000.0 / (time() - first_time)));
     print("cleaning up...");
     delete galaxy;
     glXMakeCurrent(display, None, nullptr);

@@ -7,16 +7,50 @@
 #include "utility.h"
 #include "galaxy.h"
 
+#define VERSION "desktopgalaxy v0.1c \"A Better Starchild\""
+
 void on_sig(int sigaction) {
+    println();
     println("got interrupt signal " + std::to_string(sigaction));
     quit();
 }
 
 int main(int argc, char** argv) {
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0) {
+            println("Usage: desktopgalaxy [OPTION...]");
+
+            println();
+
+            println("  -h, --help       print this message and exit");
+            println("  -f, --fpstarget  set the fps that desktopgalaxy will try to run at");
+            println("  -s, --seed       set the seed to generate galaxy from");
+            println("  -e, --export     export the galaxy generated to a file (does not require argument)");
+            println("  -a, --arms       number of arms the galaxy is to generate");
+            println("  -l, --length     length of the arms the galaxy is to generate");
+            println("  -c, --coef       expansion coefficient of the arms the galaxy is to generate");
+
+
+            println();
+
+            println("Examples:");
+            println("  desktopgalaxy");
+            println("  desktopgalaxy --fpstarget 30 --export hello.txt ");
+            println("  desktopgalaxy -s 1234");
+            println("  desktopgalaxy -e");
+
+            return 0;
+        }
+    }
+
     clear_logs();
 
-    print("running desktopgalaxy as ");
+    print("running ");
+    print(VERSION);
+    println(" from ");
     println(argv[0]);
+
+    println();
 
     println("beginning to initialize desktopgalaxy");
 
@@ -51,33 +85,6 @@ int main(int argc, char** argv) {
     double expansion_coefficient = 1.15;
     bool export_galaxy = false;
     std::string file_name;
-
-    for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0) {
-            println("Usage: desktopgalaxy [OPTION...]");
-
-            println();
-
-            println("  -h, --help       print this message and exit");
-            println("  -f, --fpstarget  set the fps that desktopgalaxy will try to run at");
-            println("  -s, --seed       set the seed to generate galaxy from");
-            println("  -e, --export     export the galaxy generated to a file (does not require argument)");
-            println("  -a, --arms       number of arms the galaxy is to generate");
-            println("  -l, --length     length of the arms the galaxy is to generate");
-            println("  -c, --coef       expansion coefficient of the arms the galaxy is to generate");
-
-
-            println();
-
-            println("Examples:");
-            println("  desktopgalaxy");
-            println("  desktopgalaxy --fpstarget 30 --export hello.txt ");
-            println("  desktopgalaxy -s 1234");
-            println("  desktopgalaxy -e");
-
-            return 0;
-        }
-    }
 
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--fpstarget") == 0 || strcmp(argv[i], "-f") == 0) {
