@@ -8,11 +8,37 @@ It displays a galaxy that ~~should replace~~ replaces your screen background, wh
 
 ### Command Line Options
 
-> -h, --help       prints a help message
-> -f, --fpstarget  set the fps that desktopgalaxy will try to run at
-> -s, --seed       set the seed to generate galaxy from
-> -e, --export     export the galaxy generated to a file (does not require argument)
->                  NOTE: this will ignore file names starting with '-'
+ -h, --help       prints a help message
+
+ -f, --fpstarget  set the fps that desktopgalaxy will try to run at
+
+                  DEFAULT: 20
+                  NOTE: Will not accept numbers < 5
+
+ -s, --seed       set the seed to generate galaxy from
+
+                  DEFAULT: 1234
+                  NOTE: value will be hashed, but the 'default' 1234 isn't
+
+ -e, --export     export the galaxy generated to a file (does not require argument)
+
+                  DEFAULT: desktopgalaxy.txt
+                  NOTE: this will ignore file names starting with '-'
+
+ -a, --arms       number of arms the galaxy is to generate
+
+                  DEFAULT: 4, which is a reasonable number
+                  NOTE: Will not accept numbers < 0
+
+ -l, --length     length of the arms the galaxy is to generate
+
+                  DEFAULT: 200 (degrees)
+                  NOTE: Arms start a bit away from the center offset a bit
+
+ -c, --coef       expansion coefficient of the arms the galaxy is to generate
+
+                  DEFAULT: 1.15
+                  NOTE: A bit unstable, may result in arms dissapearing
 
 ### Requirements
 
