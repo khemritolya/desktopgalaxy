@@ -6,6 +6,8 @@ desktopgalaxy is a little project, made for personal use. I don't really care wh
 
 It displays a galaxy that ~~should replace~~ replaces your screen background, which slowly rotates over time. I'm planning on adding some other stuff it'll do, but we'll see. Tested by me on an XPS 15 running Fedora 30, and by other people on some other machines.
 
+![example](https://i.imgur.com/qwKuCHz.png)
+
 ### Command Line Options
 
  -h, --help       prints a help message
