@@ -80,5 +80,6 @@ void Galaxy::generate(int arm_count, int arm_length, double expansion_coefficien
         add_star(new Galaxy::star(i, (rand() % 100) / 470.0 * shortest_axis), longest_axis);
     }
 
+    // sort the galaxy from least distance to 0,0 to greatest
     std::sort(Galaxy::galaxy->begin(), Galaxy::galaxy->end(), compare);
 }

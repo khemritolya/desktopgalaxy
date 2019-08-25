@@ -13,8 +13,10 @@ namespace Galaxy {
         void recompute(double rescaled_time);
     };
 
-    extern std::vector<star> *galaxy;
+    // The galaxy to be drawn
+    extern std::vector<star>* galaxy;
 
+    // Generate a new galaxy and store it in Galaxy::galaxy
     void generate(int arm_count, int arm_length, double expansion_coefficient, int seed);
 
 }

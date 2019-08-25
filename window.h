@@ -9,13 +9,13 @@ namespace DesktopWindow {
     extern int display_width;
     extern int display_height;
 
-// Any initialization
+    // Any initialization
     int init();
 
-// Clean up & statistics
+    // Clean up & statistics
     void quit();
 
-// The main loop
+    // The main loop
     int main_loop(double fps_target, double bright_falloff, double star_render_size);
 }
 
