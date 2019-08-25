@@ -74,7 +74,7 @@ void write_galaxy(const std::string& file_name) {
         return;
     }
 
-    for (star& s : *galaxy) {
+    for (Galaxy::star& s : *Galaxy::galaxy) {
         galaxy_file << s.radius << ":" << s.angle << std::endl;
     }
 

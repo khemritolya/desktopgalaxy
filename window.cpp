@@ -16,8 +16,9 @@ Display* display;
 int screen;
 Window window;
 XVisualInfo vinfo;
-int display_width;
-int display_height;
+
+int DesktopWindow::display_width;
+int DesktopWindow::display_height;
 
 GLXContext gl_context;
 
@@ -27,7 +28,7 @@ long first_time;
 long total_sleep_time;
 long frames;
 
-int init() {
+int DesktopWindow::init() {
     display = XOpenDisplay(0);
 
     // TODO figure out if this can actually fail
@@ -85,7 +86,7 @@ int init() {
     return 1;
 }
 
-void quit() {
+void DesktopWindow::quit() {
     // Print runtime statistics
     long quit_time = time();
 
@@ -96,7 +97,7 @@ void quit() {
     // Actually clean up
     print("cleaning up...");
 
-    delete galaxy;
+    delete Galaxy::galaxy;
 
     glXMakeCurrent(display, None, nullptr);
     glXDestroyContext(display, gl_context);
@@ -117,8 +118,8 @@ void paint(double brightness_falloff, double star_render_size) {
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0, display_width, 0, display_height); // seems like a reasonable definition of a screen
-
+    // seems like a reasonable definition of a screen
+    gluOrtho2D(0, DesktopWindow::display_width, 0, DesktopWindow::display_height);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
@@ -126,13 +127,15 @@ void paint(double brightness_falloff, double star_render_size) {
     glBegin(GL_POINTS);
 
     // The bit where stars are drawn
-    for (int i = 0; i < galaxy->size(); i++) {
-        star& s = galaxy->at(i);
+    for (int i = 0; i < Galaxy::galaxy->size(); i++) {
+        Galaxy::star& s = Galaxy::galaxy->at(i);
 
         if (brightness_falloff != 0.0) {
-            glColor4f(1, 1, 1, brightness_falloff * i / galaxy->size() + 1 - brightness_falloff);
+            glColor4f(1, 1, 1, brightness_falloff * i / Galaxy::galaxy->size() + 1 - brightness_falloff);
         }
-        glVertex2f(s.x + display_width / 2, s.y + display_height / 2); // Please draw me a star...
+
+        // Please draw me a star...
+        glVertex2f(s.x + DesktopWindow::display_width / 2.0, s.y + DesktopWindow::display_height / 2.0);
 
         s.recompute(last_time / 1000.0); // angle is a function of time
     }
@@ -142,7 +145,7 @@ void paint(double brightness_falloff, double star_render_size) {
     glXSwapBuffers(display, window);
 }
 
-int main_loop(double fps_target, double brightness_falloff, double star_render_size) {
+int DesktopWindow::main_loop(double fps_target, double brightness_falloff, double star_render_size) {
     int sleep_time = (int)std::round(1000.0 / fps_target);
     long downtime;
 
@@ -173,7 +176,7 @@ int main_loop(double fps_target, double brightness_falloff, double star_render_s
         }
     }
 
-    quit();
+    DesktopWindow::quit();
 
     return 0;
 }

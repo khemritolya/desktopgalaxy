@@ -3,16 +3,20 @@
 
 #include <vector>
 
-struct star {
-    double angle, radius, x, y;
+namespace Galaxy {
 
-    star(double angle, double radius);
+    struct star {
+        double angle, radius, x, y;
 
-    void recompute(double rescaled_time);
-};
+        star(double angle, double radius);
 
-extern std::vector<star>* galaxy;
+        void recompute(double rescaled_time);
+    };
 
-void generate(int arm_count, int arm_length, double expansion_coefficient, int seed);
+    extern std::vector<star> *galaxy;
+
+    void generate(int arm_count, int arm_length, double expansion_coefficient, int seed);
+
+}
 
 #endif

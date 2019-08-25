@@ -12,7 +12,7 @@
 void on_sig(int sigaction) {
     println();
     println("got interrupt signal " + std::to_string(sigaction));
-    quit();
+    DesktopWindow::quit();
 }
 
 int main(int argc, char** argv) {
@@ -201,15 +201,15 @@ int main(int argc, char** argv) {
     }
 
     // Any window initialization
-    if (!init()) {
+    if (!DesktopWindow::init()) {
         println("could not initialize window");
         return 1;
     }
 
     // A new galaxy
-    generate(arm_count, arm_length, expansion_coefficient, seed);
+    Galaxy::generate(arm_count, arm_length, expansion_coefficient, seed);
 
-    println("created a galaxy of " + std::to_string(galaxy->size()) + " stars");
+    println("created a galaxy of " + std::to_string(Galaxy::galaxy->size()) + " stars");
 
     // export, if asked to
     if (export_galaxy) {
@@ -219,5 +219,5 @@ int main(int argc, char** argv) {
     println("finished initialization");
 
     // main loop
-    return main_loop(fps_target, brightness_falloff, star_render_size);
+    return DesktopWindow::main_loop(fps_target, brightness_falloff, star_render_size);
 }

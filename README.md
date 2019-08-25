@@ -1,6 +1,6 @@
 # desktopgalaxy
 
-### Version 0.2a  "Tunguska Calling"
+### Version 0.2b  "Tunguska Calling Again"
 
 **Author: Khemri Tolya**
 
@@ -71,6 +71,11 @@ It displays a galaxy that ~~should replace~~ replaces your screen background, wh
 - make rendering even more efficient (perhaps)
 
 ### Release Notes
+
+##### Version 0.2b "Tunguska Calling Again"
+
+- A bunch of code fixes to make the code less bad practice
+    - Namespaces really
 
 ##### Version 0.2a "Tunguska Calling"
 
