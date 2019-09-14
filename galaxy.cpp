@@ -1,10 +1,3 @@
-#include <vector>
-#include <ctime>
-#include <cstdlib>
-#include <math.h>
-#include <random>
-#include <algorithm>
-
 #include "galaxy.h"
 #include "window.h"
 #include "utility.h"

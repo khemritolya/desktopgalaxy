@@ -1,9 +1,3 @@
-#include <chrono>
-#include <iostream>
-#include <fstream>
-#include <math.h>
-#include <zconf.h>
-
 #include "utility.h"
 #include "galaxy.h"
 
