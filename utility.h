@@ -8,7 +8,9 @@
 void clear_logs();
 
 void print(const std::string& string);
+
 void println(const std::string& string);
+
 void println();
 
 double internal_sin(double angle_deg);

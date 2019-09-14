@@ -4,7 +4,6 @@
 #include <vector>
 
 namespace Galaxy {
-
     struct star {
         double angle, radius, x, y;
 

@@ -61,7 +61,7 @@ void Galaxy::generate(int arm_count, int arm_length, double expansion_coefficien
     for (double i = 60; i < 60 + arm_length; i += 0.5) {
         for (int j = 0; j < arm_count; j++) {
             add_star(new Galaxy::star(i + 360.0 / arm_count * j, std::pow(i, expansion_coefficient) * shortest_axis / 500 +
-            shortest_axis / 10 * distribution(generator)), longest_axis);
+            shortest_axis / 10.0 * distribution(generator)), longest_axis);
         }
     }
 

@@ -42,7 +42,6 @@ void print(const std::string& string) {
     logfile << string;
 }
 
-// Java-style println
 void println(const std::string& string) {
     print(string + "\n");
 }

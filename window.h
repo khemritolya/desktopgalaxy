@@ -3,8 +3,6 @@
 
 #include <string>
 
-// TODO figure out if I need to expose these, or if I can figure a way around that
-
 namespace DesktopWindow {
     extern int display_width;
     extern int display_height;
