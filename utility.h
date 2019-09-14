@@ -2,6 +2,11 @@
 #define DESKTOPGALAXY_UTILITY_H
 
 #include <string>
+#include <chrono>
+#include <iostream>
+#include <fstream>
+#include <math.h>
+#include <zconf.h>
 
 #define PI 3.14159265
 

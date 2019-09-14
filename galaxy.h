@@ -2,6 +2,12 @@
 #define DESKTOPGALAXY_GALAXY_H
 
 #include <vector>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
+#include <math.h>
+#include <random>
+#include <algorithm>
 
 namespace Galaxy {
     struct star {
