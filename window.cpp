@@ -120,14 +120,17 @@ void paint(double brightness_falloff, double star_render_size) {
     for (int i = 0; i < Galaxy::galaxy->size(); i++) {
         Galaxy::star& s = Galaxy::galaxy->at(i);
 
+        double brightness = brightness_falloff * i / Galaxy::galaxy->size() + 1 - brightness_falloff;
+
         if (brightness_falloff != 0.0) {
-            glColor4f(1, 1, 1, brightness_falloff * i / Galaxy::galaxy->size() + 1 - brightness_falloff);
+            glColor4f(1, 1, 1, brightness);
         }
 
         // Please draw me a star...
         glVertex2f(s.x + DesktopWindow::display_width / 2.0, s.y + DesktopWindow::display_height / 2.0);
 
-        s.recompute(last_time / 1000.0); // angle is a function of time
+        // for now, no
+        s.recompute(0); // angle is a function of time
     }
     
     glEnd();

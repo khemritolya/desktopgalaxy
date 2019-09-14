@@ -1,6 +1,6 @@
 # desktopgalaxy
 
-### Version 0.2b  "Tunguska Calling Again"
+### Version 0.2c  "Tunguska's Echos"
 
 **Author: Khemri Tolya**
 
@@ -53,7 +53,7 @@ It displays a galaxy that ~~should replace~~ replaces your screen background, wh
 
  -S, --size       set the rendered size of stars
   
-    DEFAULT: 2.5 (px)
+    DEFAULT: 1.5 (px)
     NOTE: Will not accept numbers < 1
 
 ### System Requirements
@@ -71,6 +71,12 @@ It displays a galaxy that ~~should replace~~ replaces your screen background, wh
 - make rendering even more efficient (perhaps)
 
 ### Release Notes
+
+##### Version 0.2c "Tunguska Calling Again"
+
+- Created legacy branch (Permanently on 0.2b)
+- Minor code reshuffling (found on legacy)
+- Preparation for the NEXT BIG STEP
 
 ##### Version 0.2b "Tunguska Calling Again"
 

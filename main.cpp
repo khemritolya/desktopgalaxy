@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
 
     // Default values
     int fps_target = 20, seed = 1234, arm_count = 4, arm_length = 200;
-    double expansion_coefficient = 1.15, star_render_size = 2.5, brightness_falloff = 0.7;
+    double expansion_coefficient = 1.15, star_render_size = 1.5, brightness_falloff = 0.7;
     bool export_galaxy = false;
     std::string file_name;
 
@@ -136,7 +136,7 @@ int main(int argc, char** argv) {
                 if (star_render_size < 1) {
                     print("could not initialize star render size: ");
                     println(argv[i]);
-                    star_render_size = 2.5;
+                    star_render_size = 1.5;
                 } else {
                     println("initialized star render size: " + std::to_string(star_render_size));
                 }
