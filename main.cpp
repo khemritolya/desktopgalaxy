@@ -6,7 +6,7 @@
 #include "utility.h"
 #include "galaxy.h"
 
-#define VERSION "desktopgalaxy v0.2a \"Tunguska Calling\""
+#define VERSION "desktopgalaxy v0.2a \"Tunguska's Echoes\""
 
 // What to do when stuff does wrong
 void on_sig(int sigaction) {

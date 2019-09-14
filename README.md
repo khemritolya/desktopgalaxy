@@ -1,6 +1,6 @@
 # desktopgalaxy
 
-### Version 0.2c  "Tunguska's Echos"
+### Version 0.2c  "Tunguska's Echoes"
 
 **Author: Khemri Tolya**
 
@@ -72,7 +72,7 @@ It displays a galaxy that ~~should replace~~ replaces your screen background, wh
 
 ### Release Notes
 
-##### Version 0.2c "Tunguska Calling Again"
+##### Version 0.2c "Tunguska's Echoes"
 
 - Created legacy branch (Permanently on 0.2b)
 - Minor code reshuffling (found on legacy)
