@@ -2,7 +2,7 @@
 
 ### Version 0.2b  "Tunguska Calling Again"
 
-**Author: Khemri Tolya**
+**Author: Luis Hoderlein**
 
 desktopgalaxy is a little project, made for personal use. I don't really care what you do with it.
 
